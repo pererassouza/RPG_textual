@@ -10,14 +10,17 @@ class Character(ABC):
                  _magical_damage: int,
                  _life: int):
         self.name = name
-        self.clss = _clss
         self.race = race
+        self.clss = _clss
         self.physical_damage = _physical_damage
         self.magical_damage = _magical_damage
         self.life = _life
 
     @abstractmethod
-    def show_character(self): ...
-
-    @abstractmethod
     def basic_attck(self, en): ...
+
+    @property
+    def show_character(self):
+        print(f"Name: {self.name}\nClass: {self.clss}\nRace: {self.race}\n\
+Physical damage: {self.physical_damage}\nMagical damage: {self.magical_damage}\
+\nLife: {self.life}\n")

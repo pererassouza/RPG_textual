@@ -1,5 +1,4 @@
 from characters import Character
-import os
 
 
 class BattleCamp:
@@ -35,6 +34,5 @@ class BattleCamp:
             print("Which scam do you want to use?")
             print("(1)Basic_atack or (2)Nothing")
             choice = input("=> ")
-            os.system('cls')
             print()
             self.manage_battle(choice)

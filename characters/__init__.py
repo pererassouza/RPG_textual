@@ -1,4 +1,5 @@
 from .character import Character
-from .mage import Mage
-from .warrior import Warrior
 from .enemy import Enemy
+from .mage import Mage
+from .orc import Orc
+from .warrior import Warrior

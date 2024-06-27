@@ -22,6 +22,6 @@ class Orc(Character):
             en.resistencia -= self._intimidar - 1
         self.enemy.resistencia -= self._intimidar
 
-    def power_up(self):
+    def power_up(self, *args):
         self.magical_damage += 1
         self.physical_damage += 2

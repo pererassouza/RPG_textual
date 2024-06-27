@@ -1,4 +1,4 @@
-from config.chat import config_scene
+from config.chat_history import config_scene
 
 
 class Cenario:

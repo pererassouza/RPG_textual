@@ -16,9 +16,9 @@ class Enemy(Character):
     def basic_attck(self, en: Character):
         en.life -= self.magical_damage - en.resistencia
 
-    def power_up(self):
+    def power_up(self, *args):
         self.magical_damage += 1
         self.physical_damage += 1
 
     def intimidar(self, en: Character):
-        en.resistencia -= self._intimidar - 1
+        en.resistencia -= self._intimidar

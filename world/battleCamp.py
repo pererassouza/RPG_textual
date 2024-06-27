@@ -1,5 +1,5 @@
 from characters import Character
-from time import sleep
+from config.chat_escolha import config_choice, atacar, s
 
 
 class BattleCamp:
@@ -42,7 +42,15 @@ class BattleCamp:
             ...
 
     def start_battle(self):
-        print("Start attacking")
+        turn = 0
+        re = config_choice(self.enemy.life, self.enemy.physical_damage,
+                           self.enemy.magical_damage,
+                           self.character.life,
+                           self.character.physical_damage,
+                           self.character.magical_damage,
+                           self.enemy.resistencia,
+                           self.character.resistencia)
+        print("\nStart attacking")
         while self.character.life > 0 and self.enemy.life > 0:
             print("Which scam do you want to use?")
             print("(1)Basic_atack\n(2)intimidar\n(3)Power Up\n(4)Nothing")
@@ -50,10 +58,53 @@ class BattleCamp:
             self.manage_battle(choice)
             if self.enemy.life <= 0:
                 break
-            sleep(1)
+
+            print("\nEnemy's attacking")
+
+            funcoes = {
+                "basic_attack": self.enemy.basic_attck,
+                "intimidar": self.enemy.intimidar,
+                "power_up": self.enemy.power_up
+            }
+            if turn == 0:
+                rees, choice = s(re, self.enemy.life,
+                                 self.enemy.physical_damage,
+                                 self.enemy.magical_damage,
+                                 self.character.life,
+                                 self.character.physical_damage,
+                                 self.character.magical_damage,
+                                 self.enemy.resistencia,
+                                 self.character.resistencia)
+                turn += 1
+            else:
+                choice = atacar(rees, self.enemy.life,
+                                self.enemy.physical_damage,
+                                self.enemy.magical_damage,
+                                self.character.life,
+                                self.character.physical_damage,
+                                self.character.magical_damage,
+                                self.enemy.resistencia,
+                                self.character.resistencia)
+            if choice in funcoes:
+                funcoes[choice](self.character)
+
+                if choice == "basic_attack":
+                    print("Enemy Attacked!!")
+                    if self.character.life <= 0:
+                        print("You died!")
+                    print(f"Your life: {self.character.life}")
+                elif choice == "intimidar":
+                    if self.character.resistencia <= 0:
+                        print("Resistencia zerada")
+                        continue
+                    print("Enemy's intimidated!!")
+                    print(f"Your Resisteince: {self.character.resistencia}")
+                elif choice == "power_up":
+                    print("Enemy's use Power Up!!")
+                    print(
+                        f"Enemy physical damage: \
+{self.enemy.physical_damage}")
+                    print(
+                        f"Enemy magical damage: \
+{self.enemy.magical_damage}")
             print()
-            print("Enemy's attacking")
-            self.enemy.basic_attck(self.character)
-            if self.character.life <= 0:
-                print("You died!")
-            print(f"Your life: {self.character.life}")

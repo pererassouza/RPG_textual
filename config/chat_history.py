@@ -1,5 +1,6 @@
 import cohere
 
+
 def config_scene():
     print("Making Scene...\n")
     co = cohere.Client("HgoyG78y95WA5yyIpWSSG5gB8DlsfVUAZlXISlQ8")

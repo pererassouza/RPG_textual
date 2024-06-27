@@ -23,6 +23,6 @@ class Warrior(Character):
             en.resistencia -= self._intimidar - 1
         en.resistencia -= self._intimidar
 
-    def power_up(self):
+    def power_up(self, *args):
         self.magical_damage += 2
         self.physical_damage += 4

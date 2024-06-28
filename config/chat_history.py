@@ -31,10 +31,10 @@ def config_scene():
         chat_history=re.chat_history
     )
 
-    def criar_história():
-        more_one = co.chat(
-            message='mais',
-            chat_history=r.chat_history
-        )
-        historia = more_one.text
-        return historia
+
+    more_one = co.chat(
+        message='mais',
+        chat_history=r.chat_history
+    )
+    historia = more_one.text
+    return historia

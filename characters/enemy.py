@@ -4,9 +4,9 @@ from .character import Character
 class Enemy(Character):
     def __init__(self, name: str, raca: str):
         self.clss = 'Enemy'
-        self.physical_damage = 5
-        self.magical_damage = 15
-        self.life = 40
+        self.physical_damage = 15
+        self.magical_damage = 20
+        self.life = 60
         self._intimidar = 1
         self.resistencia = 5
         super().__init__(name, raca, self.life, self.clss,

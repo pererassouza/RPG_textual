@@ -51,7 +51,7 @@ class BattleCamp:
             if self.enemy.life <= 0:
                 break
 
-            print("\nEnemy's attacking")
+            print(f"\n{self.enemy.name} attacking")
 
             funcoes = {
                 "basic_attck": self.enemy.basic_attck,
@@ -67,13 +67,14 @@ class BattleCamp:
                 self.enemy.resistencia, self.character.resistencia
             )
 
-            print(f"Enemy choice: {escolha_inimigo}")  # Debug print
+            print(f"{self.enemy.name} choice: {
+                  escolha_inimigo}")  # Debug print
 
             if escolha_inimigo in funcoes:
                 funcoes[escolha_inimigo](self.character)
 
                 if escolha_inimigo == "basic_attck":
-                    print("Enemy Attacked!!")
+                    print(f"{self.enemy.name} Attacked!!")
                     if self.character.life <= 0:
                         print("You died!")
                         break
@@ -82,14 +83,15 @@ class BattleCamp:
                     if self.character.resistencia <= 0:
                         print("Resistencia zerada")
                         continue
-                    print("Enemy's intimidated!!")
+                    print(f"{self.enemy.name} intimidated!!")
                     print(f"Your Resistance: {self.character.resistencia}")
                 elif escolha_inimigo == "power_up":
-                    print("Enemy used Power Up!!")
-                    print(f"Enemy physical damage: {
+                    print(f"{self.enemy.name} used Power Up!!")
+                    print(f"{self.enemy.name} physical damage: {
                           self.enemy.physical_damage}")
-                    print(f"Enemy magical damage: {self.enemy.magical_damage}")
+                    print(f"{self.enemy.name} magical damage: {
+                          self.enemy.magical_damage}")
             else:
-                print(f"Invalid enemy choice: {
+                print(f"Invalid {self.enemy.name} choice: {
                       escolha_inimigo}")  # Debug print
             print()
